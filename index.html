@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybercrime & Crypto Security</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: #ffffff;
+    }
+    header {
+      background: #151d35;
+      padding: 22px;
+      text-align: center;
+    }
+    header h1 {
+      color: #35e0c1;
+      font-size: 25px;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      background: #151d35;
+      padding: 20px;
+      margin: 16px 0;
+      border-radius: 12px;
+      border: 1px solid #283653;
+    }
+    h2 { color: #35e0c1; }
+    button {
+      background: #35e0c1;
+      color: #0b1020;
+      border: 0;
+      padding: 12px 18px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+    input, textarea {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #394765;
+      background: #0b1020;
+      color: white;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #aab5cc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛡️ Cybercrime & Crypto Security</h1>
+    <p>Learn • Detect Risks • Stay Safe</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>🔐 Security Dashboard</h2>
+      <p>Learn how to protect your accounts, wallets, and personal data.</p>
+    </section>
+
+    <section class="card">
+      <h2>🪙 Crypto Scam Checker</h2>
+      <p>Enter a suspicious URL to prepare it for review.</p>
+      <input id="url" type="text"
+        placeholder="Enter a suspicious website URL">
+      <button onclick="checkUrl()">Review URL</button>
+      <p id="result" aria-live="polite"></p>
+      <small>This demo does not verify whether a URL is safe.</small>
+    </section>
+
+    <section class="card">
+      <h2>🚨 Cybercrime Report</h2>
+      <form onsubmit="submitReport(event)">
+        <input id="category" required
+          placeholder="Incident type">
+        <textarea id="details" required
+          placeholder="Describe the incident"></textarea>
+        <button type="submit">Prepare Report</button>
+      </form>
+      <p id="reportResult" aria-live="polite"></p>
+      <small>This demo does not send or store reports.</small>
+    </section>
+
+    <section class="card">
+      <h2>📚 Security Tips</h2>
+      <ul>
+        <li>Never share your password or wallet recovery phrase.</li>
+        <li>Verify website addresses before signing in.</li>
+        <li>Beware of guaranteed investment returns.</li>
+        <li>Enable two-factor authentication.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Educational prototype — not a security guarantee.
+  </footer>
+
+  <script>
+    function checkUrl() {
+      const value = document.getElementById("url").value.trim();
+      const result = document.getElementById("result");
+
+      if (!value) {
+        result.textContent = "Please enter a URL to review.";
+        return;
+      }
+
+      result.textContent =
+        "Not verified. Do not open suspicious links or enter passwords. " +
+        "Check the domain using a trusted security service.";
+    }
+
+    function submitReport(event) {
+      event.preventDefault();
+      document.getElementById("reportResult").textContent =
+        "Demo only: your report has not been sent or saved.";
+    }
+  </script>
+</body>
+</html>
