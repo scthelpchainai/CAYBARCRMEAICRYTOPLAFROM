@@ -131,7 +131,158 @@ body{background:white;color:#111}
 </div>
 </div>
 </div>
+</section><section>
+<div class="wrap card">
+<h2>Trusted Learning Resources</h2>
+<p><a href="https://www.cisa.gov/secure-our-world" target="_blank" rel="noopener noreferrer">CISA — Secure Our World</a></p>
+<p><a href="https://consumer.ftc.gov/scams" target="_blank" rel="noopener noreferrer">FTC — Scam Prevention</a></p>
+<p><a href="https://www.investor.gov/" target="_blank" rel="noopener noreferrer">Investor.gov — Investor Education</a></p>
+<p><a href="https://www.police.gov.bd/" target="_blank" rel="noopener noreferrer">Bangladesh Police — Official Website</a></p>
+</div>
 </section>
+
+<section class="no-print">
+<div class="wrap card">
+<h2>Local Data Controls</h2>
+<p>Community posts are stored in this browser only. Clear them when using a shared device.</p>
+<button class="btn danger" id="clearAll">Clear This App's Local Data</button>
+<div id="dataMessage" class="result hidden"></div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<h3>CAYBARCRME INVESTIGATION AI</h3>
+<p>Cybersecurity Awareness · Crypto Safety · Community Learning</p>
+<p>Educational Prototype Only — No real AI, financial, identity or investigation service is connected.</p>
+<p>© <span id="year"></span> CAYBARCRME</p>
+</footer>
+
+<script>
+'use strict';
+
+const $ = id => document.getElementById(id);
+
+$('year').textContent = new Date().getFullYear();
+
+let supportDraftText = '';
+
+function show(el, text) {
+    el.classList.remove('hidden');
+    el.textContent = text;
+}
+
+function downloadText(filename, content) {
+    const blob = new Blob([content], {
+        type: 'text/plain;charset=utf-8'
+    });
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+
+    a.href = url;
+    a.download = filename;
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// WEBSITE URL REVIEW
+
+$('checkUrl').addEventListener('click', () => {
+    const raw = $('urlInput').value.trim();
+    const out = $('urlResult');
+
+    if (!raw) {
+        return show(out, 'Enter a website address.');
+    }
+
+    let u;
+
+    try {
+        u = new URL(
+            /^[a-zA-Z][a-zA-Z\d+.-]*:/.test(raw)
+                ? raw
+                : 'https://' + raw
+        );
+    } catch {
+        return show(out, 'Invalid website address. Check the spelling and format.');
+    }
+
+    if (!['http:', 'https:'].includes(u.protocol)) {
+        return show(out, 'Only HTTP and HTTPS website addresses are accepted.');
+    }
+
+    if (!u.hostname || !u.hostname.includes('.')) {
+        return show(out, 'The address does not appear to contain a valid public hostname.');
+    }
+
+    const warnings = [];
+
+    if (u.protocol !== 'https:') {
+        warnings.push('The address uses HTTP rather than HTTPS.');
+    }
+
+    if (u.hostname.toLowerCase().includes('xn--')) {
+        warnings.push('The domain contains encoded international characters. Check it carefully.');
+    }
+
+    if (u.username || u.password) {
+        warnings.push('The address contains embedded login information. Do not share it.');
+    }
+
+    show(
+        out,
+        (warnings.length
+            ? warnings.join('\n')
+            : 'No basic URL-format warning was detected.'
+        ) +
+        '\n\nThis is not a security scan and cannot establish whether a website is genuine or safe.'
+    );
+});
+
+// INCIDENT REPORT GENERATOR
+
+$('makeReport').addEventListener('click', () => {
+    const date = $('incidentDate').value;
+    const details = $('incidentDetails').value.trim();
+    const out = $('reportResult');
+
+    if (!date || !details) {
+        return show(out, 'Enter the incident date and a description before downloading.');
+    }
+
+    const data = [
+        'CAYBARCRME INVESTIGATION AI',
+        'INCIDENT REPORT DRAFT',
+        '',
+        'Category: ' + $('incidentType').value,
+        'Date: ' + date,
+        '',
+        'Description:',
+        details,
+        '',
+        'Draft only. Not submitted to any authority.',
+        'Never include passwords, private keys or recovery phrases.'
+    ].join('\n');
+
+    downloadText('caybarcrme-incident-report-draft.txt', data);
+
+    show(out, 'Report draft download prepared. It has not been submitted to any authority.');
+});
+
+// WALLET INFORMATION
+
+$('walletInfo').addEventListener('click', () => {
+    show(
+        $('walletMessage'),
+        'Simulation only. No account, blockchain, private key, deposit, withdrawal or real balance is connected.'
+    );
+});
 
 <section id="service">
 <div class="wrap">
