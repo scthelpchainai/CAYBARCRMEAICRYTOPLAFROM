@@ -108,6 +108,147 @@ body{background:white;color:#111}
 <div class="notice">Single-file browser prototype. No real AI, bank, exchange, blockchain or government database is connected.</div>
 </div>
 </div>
+</section><section id="wallet">
+<div class="wrap">
+<h2>Digital Wallet Dashboard</h2>
+<div class="grid two">
+<div class="card">
+<h3>Demo Balance</h3>
+<div style="font-size:35px;color:var(--cyan);font-weight:bold" id="balance">$1,250.00</div>
+<p>Fictional demo USD value. No real funds exist.</p>
+<div class="row"><span>Wallet Status</span><span>Simulation</span></div>
+<div class="row"><span>Network</span><span>Not connected</span></div>
+<div class="row"><span>Deposits / Withdrawals</span><span>Disabled</span></div>
+<button class="btn" id="walletInfo">Wallet Information</button>
+<div id="walletMessage" class="result hidden"></div>
+</div>
+<div class="card">
+<h3>Sample Activity</h3>
+<div class="row"><span>Demo Credit</span><span>+$1,000</span></div>
+<div class="row"><span>Practice Reward</span><span>+$250</span></div>
+<div class="row"><span>Real transactions</span><span>None</span></div>
+<p>No deposits, transfers, withdrawals, token sales or investments are performed.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="service">
+<div class="wrap">
+<h2>Customer Service</h2>
+<div class="grid two">
+<div class="card">
+<h3>Local Support Assistant</h3>
+<div class="chatlog" id="chatlog" aria-live="polite">
+<div class="msg bot">Welcome to CAYBARCRME Support. Ask about demo tools, reporting, account safety or learning resources.</div>
+</div>
+<label for="chatInput">Your Question</label>
+<input id="chatInput" maxlength="1000" placeholder="Type your question">
+<button class="btn" id="sendChat">Send Message</button>
+<p class="small">Rule-based local assistant, not a live AI agent.</p>
+</div>
+<div class="card">
+<h3>Support Request Draft</h3>
+<label for="supportTopic">Topic</label>
+<select id="supportTopic">
+<option>Account / Membership</option>
+<option>Security Concern</option>
+<option>Technical Issue</option>
+<option>Community Moderation</option>
+</select>
+<label for="supportText">Message</label>
+<textarea id="supportText" maxlength="3000" placeholder="Describe the issue. Do not share passwords or secret keys."></textarea>
+<button class="btn" id="supportDraft">Prepare Request</button>
+<button class="btn secondary" id="downloadSupport">Download Request</button>
+<div id="supportResult" class="result hidden" aria-live="polite"></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="community">
+<div class="wrap">
+<h2>Global Community</h2>
+<div class="grid two">
+<div class="card">
+<h3>Community Guidelines</h3>
+<ul>
+<li>Respect all members.</li>
+<li>Protect personal and financial information.</li>
+<li>Never promise guaranteed investment returns.</li>
+<li>Do not publish unverified accusations or private information.</li>
+<li>Report harmful content to a responsible moderator.</li>
+</ul>
+</div>
+<div class="card">
+<h3>Create Community Post</h3>
+<label for="communityName">Display Name</label>
+<input id="communityName" maxlength="60" placeholder="Community Member">
+<label for="communityPost">Discussion</label>
+<textarea id="communityPost" maxlength="2000" placeholder="Share a learning question or safety tip."></textarea>
+<button class="btn" id="publishPost">Publish Local Demo Post</button>
+<p class="small">Posts are saved only in this browser. They are not public or shared with other users.</p>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="row">
+<h3>Community Feed</h3>
+<button class="btn danger" id="clearPosts">Clear Local Posts</button>
+</div>
+<div id="feed">No posts yet.</div>
+</div>
+</div>
+</section>
+
+<section id="membership">
+<div class="wrap">
+<h2>Digital Membership ID</h2>
+<div class="grid two">
+<div class="card no-print">
+<h3>Member Details</h3>
+<label for="memberName">Display Name</label>
+<input id="memberName" maxlength="60" placeholder="Your Name">
+<button class="btn" id="createId">Generate Demo Member ID</button>
+<p class="small">Use a display name only. Do not enter national ID numbers or sensitive personal data.</p>
+</div>
+<div>
+<div class="id-card" id="printCard">
+<h3>CAYBARCRME COMMUNITY</h3>
+<div class="id-name" id="cardName">COMMUNITY MEMBER</div>
+<div class="id-number" id="cardNumber">MEMBER-ID: DEMO-000000</div>
+<p>DEMO MEMBERSHIP CARD — NOT AN OFFICIAL ID</p>
+<p class="small">For platform demonstration only.</p>
+</div>
+<button class="btn no-print" id="printId">Print Demo Card</button>
+</div>
+</div>
+</div>
+</section>
+
+<section id="learning">
+<div class="wrap">
+<h2>Security & Financial Learning</h2>
+<div class="grid">
+<div class="card"><h3>Level 01</h3><p>Digital Security Basics: passwords, multi-factor authentication and phishing awareness.</p></div>
+<div class="card"><h3>Level 02</h3><p>Blockchain Fundamentals: public ledgers, wallets and transaction confirmations.</p></div>
+<div class="card"><h3>Level 03</h3><p>Financial Risk Awareness: volatility, scams and independent research.</p></div>
+</div>
+<div class="grid two" style="margin-top:16px">
+<div class="card">
+<h3>Practice Calculator</h3>
+<label for="practiceAmount">Practice Amount (USD)</label>
+<input type="number" id="practiceAmount" value="1000" min="0" max="1000000" step="0.01">
+<label for="practiceChange">Hypothetical Change (%)</label>
+<input type="number" id="practiceChange" value="-10" min="-100" max="100" step="0.01">
+<button class="btn" id="calculatePractice">Calculate</button>
+<div id="practiceResult" class="result hidden" aria-live="polite"></div>
+</div>
+<div class="card">
+<h3>Risk Notice</h3>
+<p>Crypto-assets can be volatile and may involve fraud, loss and regulatory risks. This site does not provide investment advice, accept investments or promise returns.</p>
+</div>
+</div>
+</div>
 </section>
 
 <section id="dashboard">
