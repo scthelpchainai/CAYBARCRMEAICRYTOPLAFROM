@@ -1030,5 +1030,247 @@ $("calculatePractice").addEventListener("click", () => {
 });
 </script>
 
+</body>// SUPPORT CHAT ASSISTANT
+
+function addMessage(text, type) {
+    const el = document.createElement('div');
+
+    el.className = 'msg ' + type;
+    el.textContent = text;
+
+    $('chatlog').appendChild(el);
+    $('chatlog').scrollTop = $('chatlog').scrollHeight;
+}
+
+$('sendChat').addEventListener('click', () => {
+    const input = $('chatInput');
+    const q = input.value.trim();
+
+    if (!q) return;
+
+    addMessage(q, 'user');
+    input.value = '';
+
+    const s = q.toLowerCase();
+
+    let answer =
+        'I can explain the demo platform. Never share passwords, one-time codes, private keys or recovery phrases.';
+
+    if (/report|fraud|scam|phish/.test(s)) {
+        answer = 'Open Investigation → Incident Report Draft. Complete the date and description, then download the draft. This demo does not submit reports.';
+    } else if (/wallet|balance|deposit|withdraw|transfer/.test(s)) {
+        answer = 'The displayed wallet balance is fictional sample data. No real funds, blockchain or transfers are supported.';
+    } else if (/id card|membership|member id/.test(s)) {
+        answer = 'Open Digital Membership ID. Generate a clearly marked demo card. It is not an official identity document.';
+    } else if (/invest|profit|return|crypto/.test(s)) {
+        answer = 'Open Learning for financial-risk education. This platform does not accept investments or promise returns.';
+    } else if (/url|website|link/.test(s)) {
+        answer = 'Open Investigation → Website Address Review. It checks basic URL formatting only; it cannot prove a website is safe.';
+    } else if (/human|agent|contact|support/.test(s)) {
+        answer = 'Use Support Request Draft to prepare a message. It is not automatically sent; contact the platform owner through a verified channel.';
+    }
+
+    addMessage(answer, 'bot');
+});
+
+$('chatInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+        $('sendChat').click();
+    }
+});
+
+// SUPPORT REQUEST
+
+$('supportDraft').addEventListener('click', () => {
+    const msg = $('supportText').value.trim();
+    const out = $('supportResult');
+
+    if (!msg) {
+        return show(out, 'Describe the issue first.');
+    }
+
+    supportDraftText = [
+        'CAYBARCRME SUPPORT REQUEST',
+        'Topic: ' + $('supportTopic').value,
+        '',
+        'Message:',
+        msg,
+        '',
+        'Not sent automatically.'
+    ].join('\n');
+
+    show(
+        out,
+        'Support request draft prepared. Use Download Request to save it. No message has been sent.'
+    );
+});
+
+$('downloadSupport').addEventListener('click', () => {
+    if (!supportDraftText) {
+        return show($('supportResult'), 'Prepare a support request first.');
+    }
+
+    downloadText('caybarcrme-support-request.txt', supportDraftText);
+});
+
+// COMMUNITY STORAGE
+
+const STORE = 'caybarcrme_demo_posts_v1';
+
+function getPosts() {
+    try {
+        return JSON.parse(localStorage.getItem(STORE) || '[]');
+    } catch {
+        return [];
+    }
+}
+
+function renderPosts() {
+    const feed = $('feed');
+    feed.replaceChildren();
+
+    const posts = getPosts();
+
+    if (!posts.length) {
+        feed.textContent = 'No posts yet.';
+        return;
+    }
+
+    posts.forEach(p => {
+        const item = document.createElement('article');
+        item.className = 'feed-item';
+
+        const name = document.createElement('strong');
+        name.textContent = p.name;
+
+        const date = document.createElement('div');
+        date.className = 'small';
+        date.textContent = p.date;
+
+        const body = document.createElement('p');
+        body.textContent = p.text;
+
+        item.append(name, date, body);
+        feed.appendChild(item);
+    });
+}
+
+$('publishPost').addEventListener('click', () => {
+    const text = $('communityPost').value.trim();
+
+    if (!text) {
+        return alert('Write a post first.');
+    }
+
+    const posts = getPosts();
+
+    posts.unshift({
+        name: $('communityName').value.trim() || 'Community Member',
+        text: text,
+        date: new Date().toLocaleString()
+    });
+
+    try {
+        localStorage.setItem(STORE, JSON.stringify(posts.slice(0, 100)));
+
+        $('communityPost').value = '';
+        renderPosts();
+    } catch {
+        alert('Local storage is unavailable or full. The post was not saved.');
+    }
+});
+
+$('clearPosts').addEventListener('click', () => {
+    if (confirm('Clear all locally saved demo community posts?')) {
+        localStorage.removeItem(STORE);
+        renderPosts();
+    }
+});
+
+renderPosts();
+
+// DEMO MEMBER ID
+
+$('createId').addEventListener('click', () => {
+    const name = $('memberName').value.trim();
+
+    if (!name) {
+        return alert('Enter a display name.');
+    }
+
+    const b = new Uint8Array(5);
+
+    if (window.crypto && crypto.getRandomValues) {
+        crypto.getRandomValues(b);
+    } else {
+        for (let i = 0; i < b.length; i++) {
+            b[i] = Math.floor(Math.random() * 256);
+        }
+    }
+
+    const id = 'DEMO-' +
+        Array.from(b, x => x.toString(16).padStart(2, '0'))
+        .join('')
+        .toUpperCase();
+
+    $('cardName').textContent = name.toUpperCase();
+    $('cardNumber').textContent = 'MEMBER-ID: ' + id;
+});
+
+$('printId').addEventListener('click', () => {
+    window.print();
+});
+
+// PRACTICE CALCULATOR
+
+$('calculatePractice').addEventListener('click', () => {
+    const amount = Number($('practiceAmount').value);
+    const change = Number($('practiceChange').value);
+    const out = $('practiceResult');
+
+    if (
+        !Number.isFinite(amount) ||
+        !Number.isFinite(change) ||
+        amount < 0 ||
+        amount > 1000000 ||
+        change < -100 ||
+        change > 100
+    ) {
+        return show(
+            out,
+            'Enter an amount from 0 to 1,000,000 and a percentage from -100 to 100.'
+        );
+    }
+
+    const value = amount * (1 + change / 100);
+
+    show(
+        out,
+        'Hypothetical value: $' + value.toFixed(2) +
+        '\nChange: ' +
+        (value - amount >= 0 ? '+' : '') +
+        '$' + (value - amount).toFixed(2) +
+        '\nArithmetic practice only — not an investment forecast.'
+    );
+});
+
+// CLEAR LOCAL DATA
+
+$('clearAll').addEventListener('click', () => {
+    if (!confirm("Clear this app's locally stored community posts?")) {
+        return;
+    }
+
+    localStorage.removeItem(STORE);
+    renderPosts();
+
+    show(
+        $('dataMessage'),
+        'Local community posts cleared. Reload the page to reset the remaining demo fields.'
+    );
+});
+
+</script>
 </body>
+</html>
 </html>
