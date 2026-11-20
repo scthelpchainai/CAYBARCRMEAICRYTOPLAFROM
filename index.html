@@ -1,4 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071426">
+<meta name="description" content="CAYBARCRME Investigation AI — cybersecurity awareness, incident drafting, demo wallet and community learning.">
+<title>CAYBARCRME Investigation AI — Ultimate Master</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1d31;--line:#23415f;--text:#edf5ff;--muted:#a8bbd2;--cyan:#32e6d0;--radius:16px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Arial,sans-serif}
+a{color:var(--cyan);text-decoration:none}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.wrap{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#071426ed;border-bottom:1px solid var(--line)}
+.nav{min-height:70px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;padding:10px 0}
+.brand{font-weight:900;color:var(--cyan)}
+nav{display:flex;gap:13px;flex-wrap:wrap}
+nav a{font-size:12px;color:white}
+.hero{padding:58px 0;background:linear-gradient(130deg,#081426,#16446a)}
+.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center}
+h1{font-size:clamp(32px,5vw,54px);line-height:1.1}
+h1 span{color:var(--cyan)}
+h2{font-size:25px;margin:0 0 16px}
+p{color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+section{padding:36px 0;scroll-margin-top:85px}
+.btn{display:inline-block;padding:10px 16px;border-radius:9px;border:1px solid var(--cyan);background:var(--cyan);color:#04131c;font-weight:bold;margin:7px 5px 0 0}
+.secondary{background:transparent;color:var(--cyan)}
+.danger{background:transparent;color:#ff8585;border-color:#ff8585}
+label{display:block;color:var(--muted);margin:12px 0 5px;font-size:13px}
+input,select,textarea{width:100%;padding:11px;background:#061426;border:1px solid var(--line);border-radius:9px;color:white}
+textarea{min-height:105px}
+.result{margin-top:12px;padding:12px;background:#061426;border:1px solid var(--line);border-radius:9px;overflow-wrap:anywhere;white-space:pre-wrap}
+.hidden{display:none!important}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+.stat{background:#0a1a2c;padding:14px;border:1px solid var(--line);border-radius:10px}
+.stat strong{font-size:22px;color:var(--cyan);display:block}
+.shield{font-size:76px;text-align:center}
+.chatlog{height:220px;overflow:auto;background:#061426;padding:12px;border:1px solid var(--line);border-radius:10px}
+.msg{padding:9px;margin:7px 0;border-radius:9px;white-space:pre-wrap}
+.bot{background:#15324a}
+.user{background:#16443e;text-align:right}
+.id-card{background:linear-gradient(120deg,#12334c,#0b1a2d);border:1px solid #3a708c;border-radius:16px;padding:22px;max-width:480px}
+.id-name{font-size:24px;font-weight:bold;margin-top:20px}
+.id-number{color:var(--cyan);font-family:monospace}
+.row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.feed-item{border-bottom:1px solid var(--line);padding:12px 0}
+.small{font-size:12px;color:var(--muted)}
+.notice{border-left:3px solid var(--cyan);padding:10px 14px;background:#0a1a2c;color:var(--muted)}
+footer{text-align:center;padding:30px;border-top:1px solid var(--line)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+@media(max-width:800px){
+.hero-grid,.grid,.two{grid-template-columns:1fr}
+.stats{grid-template-columns:repeat(2,1fr)}
+}
+@media print{
+body{background:white;color:#111}
+.no-print,header,footer,section:not(#membership){display:none!important}
+#membership{display:block!important;padding:0}
+.id-card{background:white;color:#111;border:2px solid #333}
+.id-card p,.id-number{color:#111}
+}
+</style>
+</head>
+<body>
 
+<header class="no-print">
+<div class="wrap nav">
+<a class="brand" href="#home">CAYBARCRME INVESTIGATION AI</a>
+<nav aria-label="Main navigation">
+<a href="#dashboard">Dashboard</a>
+<a href="#investigation">Investigation</a>
+<a href="#wallet">Wallet</a>
+<a href="#service">Support</a>
+<a href="#community">Community</a>
+<a href="#membership">Member ID</a>
+<a href="#learning">Learning</a>
+</nav>
+</div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+<div class="wrap hero-grid">
+<div>
+<h1>CAYBARCRME <span>Investigation AI</span></h1>
+<p>Digital security, cybercrime awareness, cryptocurrency safety and global community learning — in one educational workspace.</p>
+<a class="btn" href="#dashboard">Open Dashboard</a>
+<a class="btn secondary" href="#investigation">Start Review</a>
+<div class="stats">
+<div class="stat"><strong>24/7</strong>Self-service access</div>
+<div class="stat"><strong>TOOLS</strong>Local utilities</div>
+<div class="stat"><strong>DEMO</strong>Wallet only</div>
+<div class="stat"><strong>SAFE</strong>Learning first</div>
+</div>
+</div>
+<div class="card">
+<div class="shield">🛡️</div>
+<h3>INVESTIGATE WITH CARE</h3>
+<p>Verify information, preserve evidence safely, protect private data and report suspected fraud through appropriate official channels.</p>
+<div class="notice">Single-file browser prototype. No real AI, bank, exchange, blockchain or government database is connected.</div>
+</div>
+</div>
+</section>
+
+<section id="dashboard">
+<div class="wrap">
+<h2>Platform Dashboard</h2>
+<div class="grid">
+<div class="card"><h3>Investigation Center</h3><p>Review URL formatting and prepare an incident report.</p><a href="#investigation">Open tool →</a></div>
+<div class="card"><h3>Demo Wallet</h3><p>View fictional sample balance and activity.</p><a href="#wallet">Open wallet →</a></div>
+<div class="card"><h3>Customer Support</h3><p>Local guidance and support-request drafting.</p><a href="#service">Open support →</a></div>
+<div class="card"><h3>Community</h3><p>Create posts saved only in this browser.</p><a href="#community">Open community →</a></div>
+<div class="card"><h3>Member ID</h3><p>Create and print a non-official demo card.</p><a href="#membership">Open ID →</a></div>
+<div class="card"><h3>Learning Center</h3><p>Security and financial-risk basics.</p><a href="#learning">Start learning →</a></div>
+</div>
+</div>
+</section>
+
+<section id="investigation">
+<div class="wrap">
+<h2>AI Investigation Assistant</h2>
+<div class="grid two">
+<div class="card">
+<h3>Website Address Review</h3>
+<label for="urlInput">Website URL</label>
+<input id="urlInput" placeholder="https://example.com">
+<button class="btn" id="checkUrl">Review URL</button>
+<div id="urlResult" class="result hidden" aria-live="polite"></div>
+<p class="small">Basic URL format check only. It does not visit, scan or verify a website's safety.</p>
+</div>
+<div class="card">
+<h3>Incident Report Draft</h3>
+<label for="incidentType">Incident Category</label>
+<select id="incidentType">
+<option>Phishing / Fake Website</option>
+<option>Suspected Crypto Scam</option>
+<option>Account Security Concern</option>
+<option>Online Payment Dispute</option>
+<option>Harassment / Impersonation</option>
+<option>Other</option>
+</select>
+<label for="incidentDate">Incident Date</label>
+<input type="date" id="incidentDate">
+<label for="incidentDetails">Incident Details</label>
+<textarea id="incidentDetails" maxlength="5000" placeholder="Describe what happened. Never enter passwords, private keys or recovery phrases."></textarea>
+<button class="btn" id="makeReport">Download Report Draft</button>
+<div id="reportResult" class="result hidden" aria-live="polite"></div>
+</div>
+</div>
+</div>
+</section>
 <!DOCTYPE html>
 <html lang="en">
 <head>
